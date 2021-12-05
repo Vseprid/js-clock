@@ -20,7 +20,8 @@
     position: absolute;
     top: 50%;
     left: 10px;
-    width: 50%;
+    width: calc(50% - 10px);
     height: 6px;
     background: black;
+    transform-origin: 100%;
 }
