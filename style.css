@@ -1,0 +1,4 @@
+.body {
+    background: blue url(img/background-page.jpg);
+    background-size: cover;
+}
