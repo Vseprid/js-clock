@@ -20,6 +20,5 @@ function setDate(hourHand, minHand, secondHand) {
 
 let handsMovement = setTimeout(function run() {
     setDate(hourHand, minHand ,secondHand);
-    console.log('hi')
     handsMovement = setTimeout(run, 1000);
 }, 1000);
