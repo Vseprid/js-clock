@@ -2,15 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 98vh;
+    min-height: 97vh;
+    font-size: 12px;
     background: blue url(img/background-page.jpg);
     background-size: cover;
 }
 
 .clock {
     position: relative;
-    width: 30rem;
-    height: 30rem;
+    width: 28.3em;
+    height: 28.3em;
     border: 20px solid white;
     border-radius: 50%;
     box-shadow: 0 0 0 4px rgb(0 0 0 / 10%), inset 0 0 0 3px #efefef, inset 0 0 10px black, 0 0 10px rgb(0 0 0 / 20%);
@@ -19,8 +20,8 @@
 .clock__hand {
     position: absolute;
     top: 50%;
-    left: 10px;
-    width: calc(50% - 10px);
+    left: 20px;
+    width: calc(50% - 20px);
     height: 6px;
     background: black;
     transform-origin: 100%;
