@@ -1,9 +1,18 @@
 const secondHand = document.querySelector('.hand_second');
 const minHand = document.querySelector('.hand_min');
-const hourHand = document.querySelector('.hand_hour')
+const hourHand = document.querySelector('.hand_hour');
+
+const exactTime = document.getElementById('exact-time');
+
 
 function setDate(hourHand, minHand, secondHand) {
+    const week = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+
     const now = new Date();
+
+    let dayOfWeek = week[now.getDay()];
+    let nowDate = now.toLocaleDateString('ru', {day: 'numeric', month: 'long', year: 'numeric'})
+    exactTime.innerHTML = `${now.toLocaleTimeString('ru')} ${dayOfWeek}, ${nowDate}`;
 
     const second = now.getSeconds();
     const secondDegrees = (second / 60) * 360 + 90;
