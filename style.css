@@ -5,8 +5,9 @@
     align-items: center;
     min-height: 97vh;
     font-size: 12px;
-    background: blue url(img/background-page.jpg);
+    background: blue url(img/background.jpg);
     background-size: cover;
+    background-position: 0 70%;
 }
 
 .clock {
@@ -15,18 +16,32 @@
     height: 28.3em;
     border: 20px solid white;
     border-radius: 50%;
+    background: url(img/clock.png);
+    background-size: cover;
     box-shadow: 0 0 0 4px rgb(0 0 0 / 10%), inset 0 0 0 3px #efefef, inset 0 0 10px black, 0 0 10px rgb(0 0 0 / 20%);
 }
 
 .clock__hand {
     position: absolute;
-    top: 50%;
-    left: 20px;
-    width: calc(50% - 20px);
+    top: 49%;
+    left: 55px;
+    width: calc(40% - 20px);
     height: 6px;
     background: black;
     transform-origin: 100%;
     transform: rotate(90deg);
     transition: all .5s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.hand_second {
+    height: 4px;
+    background: red;
+}
+
+.date {
+    position: absolute;
+    top: 95%;
+    font-size: 23px;
+    color: white
 }
