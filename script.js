@@ -1,17 +1,17 @@
-const secondHand = document.querySelector('.hand_second');
-const minHand = document.querySelector('.hand_min');
-const hourHand = document.querySelector('.hand_hour');
-
 const circularSecond = document.querySelector('.circle_second');
 const circularMin = document.querySelector('.circle_min');
 const circularHour = document.querySelector('.circle_hour');
 
 const exactTime = document.getElementById('exact-time');
 
+const sc = document.querySelector('#sc');
+const mn = document.querySelector('#mn');
+const hr = document.querySelector('#hr');
+
 const elementsTime = {
-    secondHand,
-    minHand,
-    hourHand,
+    sc,
+    mn,
+    hr,
     exactTime,
     circularSecond,
     circularMin,
@@ -19,19 +19,15 @@ const elementsTime = {
 }
 
 function setDate(elementsTime) {
-    const {secondHand, minHand, hourHand, circularSecond, circularMin, circularHour, exactTime} = elementsTime;
+    const {sc, mn, hr, circularSecond, circularMin, circularHour, exactTime} = elementsTime;
 
     const week = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
 
     const now = new Date();
 
-    let dayOfWeek = week[now.getDay()];
-    let nowDate = now.toLocaleDateString('ru', {day: 'numeric', month: 'long', year: 'numeric'})
-    exactTime.innerHTML = `${now.toLocaleTimeString('ru')} ${dayOfWeek}, ${nowDate}`;
-
     const second = now.getSeconds();
-    const secondDegrees = (second / 60) * 360 + 90;
-    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+    let ss = second * 6;
+    sc.style.transform = `rotateZ(${ss}deg)`;
     const secondPercent = (second / 60) * 100;
     const circleSecond = circularSecond.querySelector('.circle');
     const percentageSec = circularSecond.querySelector('.percentage');
@@ -39,8 +35,8 @@ function setDate(elementsTime) {
     percentageSec.textContent = second;
 
     const min = now.getMinutes();
-    const minDegrees = (min / 60) * 360 + second/60 * 6 + 90;
-    minHand.style.transform = `rotate(${minDegrees}deg)`;
+    let mm = min * 6 + second * 0.1;
+    mn.style.transform = `rotateZ(${mm}deg)`;
     const minPercent = (min / 60) * 100;
     const circleMin = circularMin.querySelector('.circle');
     const percentageMin = circularMin.querySelector('.percentage');
@@ -48,13 +44,17 @@ function setDate(elementsTime) {
     percentageMin.textContent = min;
 
     const hour = now.getHours()
-    const hourDegrees = (hour / 12) * 360 + min/60 * 30 + 90;
-    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-    const hourPercent = (hour / 60) * 100;
+    let hh = hour * 30;
+    hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+    const hourPercent = (hour / 24) * 100;
     const circleHour = circularHour.querySelector('.circle');
     const percentageHour = circularHour.querySelector('.percentage');
     circleHour.style.strokeDasharray = `${hourPercent}, 100`;
     percentageHour.textContent = hour;
+
+    let dayOfWeek = week[now.getDay()];
+    let nowDate = now.toLocaleDateString('ru', {day: 'numeric', month: 'long', year: 'numeric'})
+    exactTime.innerHTML = `${now.toLocaleTimeString('ru')} ${dayOfWeek}, ${nowDate}`;
 }
 
 let handsMovement = setTimeout(function run() {

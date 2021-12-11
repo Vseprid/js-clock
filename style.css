@@ -21,24 +21,6 @@
     box-shadow: 0 0 0 4px rgb(0 0 0 / 10%), inset 0 0 0 3px #efefef, inset 0 0 10px black, 0 0 10px rgb(0 0 0 / 20%);
 }
 
-.clock__hand {
-    position: absolute;
-    top: 49%;
-    left: 55px;
-    width: calc(40% - 20px);
-    height: 6px;
-    background: black;
-    transform-origin: 100%;
-    transform: rotate(90deg);
-    transition: all .5s;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-}
-
-.hand_second {
-    height: 4px;
-    background: red;
-}
-
 .date {
     position: absolute;
     top: 95%;
@@ -47,7 +29,6 @@
 }
 
 .flex-wrapper {
-    /* min-height: 3em; */
     min-width: 40%;
     display: flex;
     flex-flow: row nowrap;
@@ -102,3 +83,52 @@
     font-size: 0.8em;
     text-anchor: middle;
   }
+
+  .clock__hour ,.clock__min, .clock__sec {
+      position: absolute;
+      left: 20%;
+      top: 20%;
+      width: 60%;
+      height: 60%;
+  }
+
+  .hand_hr ,.hand_mn ,.hand_sc {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50%;
+    transition: all .5s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.hand_sc:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 120px;
+  background: #ff105e;
+  z-index: 12;
+  border-radius: 6px 6px 0 0;
+}
+
+.hand_mn:before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 110px;
+  background: black;
+  z-index: 11;
+  border-radius: 6px 6px 0 0;
+}
+
+.hand_hr:before {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 105px;
+  background: black;
+  z-index: 10;
+  border-radius: 6px 6px 0 0;
+}
